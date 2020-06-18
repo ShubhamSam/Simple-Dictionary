@@ -7,21 +7,20 @@ def translate(wrd):
         return data[wrd]
     elif len(get_close_matches(wrd, data.keys())) > 0:
         yn = input('Did yo mean %s instead ? Press Y for yes and N for No: ' % get_close_matches(wrd, data.keys())[0])
-        if yn == 'Y':
+        if yn == 'Y' or 'y':
             return data[get_close_matches(wrd, data.keys())[0]]
-        elif yn == 'N':
+        elif yn == 'N' or 'n':
             return "Word Not Exists"
         else:
             return 'Wrong Entry'
 
     else:
         return 'No Such word is present in Dictionary'
-
-
-word = input('Enter word: ')
-value = translate(word)
-if type(value) == list:
-    for item in value:
-        print(item)
-else:
-    print(value)
+while True:
+    word = input('Enter word: ')
+    value = translate(word)
+    if type(value) == list:
+        for item in value:
+            print(item)
+    else:
+        print(value)
